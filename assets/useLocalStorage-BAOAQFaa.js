@@ -1,0 +1,1 @@
+import{r as s}from"./vendor-react-DXRurfSw.js";function l(e,r){const[a,c]=s.useState(()=>{try{const t=window.localStorage.getItem(e);return t?JSON.parse(t):r}catch{return r}}),n=s.useCallback(t=>{try{c(u=>{const o=t instanceof Function?t(u):t;return window.localStorage.setItem(e,JSON.stringify(o)),o})}catch{}},[e]);return[a,n]}export{l as u};
