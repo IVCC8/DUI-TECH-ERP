@@ -22,7 +22,7 @@ function App() {
   return (
     <AuthProvider>
       <NotificationProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/DUI-TECH-ERP">
           <Suspense fallback={<div className="p-5 text-center text-muted"><i className="fas fa-spinner fa-spin me-2"></i>Cargando módulos...</div>}>
             <Routes>
               <Route path="/login" element={<Login />} />
