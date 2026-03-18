@@ -1,6 +1,22 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-// ... (rest of imports)
+import { AuthProvider } from './context/AuthContext';
+import { NotificationProvider } from './context/NotificationContext';
+import Layout from './components/layout/Layout';
+
+const Login = lazy(() => import('./pages/Login'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Inventory = lazy(() => import('./pages/Inventory'));
+const Orders = lazy(() => import('./pages/Orders'));
+const Customers = lazy(() => import('./pages/Customers'));
+const Finance = lazy(() => import('./pages/Finance'));
+const Docs = lazy(() => import('./pages/Docs'));
+const Profile = lazy(() => import('./pages/Profile'));
+const Support = lazy(() => import('./pages/Support'));
+const Catalog = lazy(() => import('./pages/Catalog'));
+const AccountStatement = lazy(() => import('./pages/AccountStatement'));
+const MySales = lazy(() => import('./pages/MySales'));
+const RH = lazy(() => import('./pages/RH/RH.jsx'));
 
 function App() {
   return (
