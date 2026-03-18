@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource erp_dui {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String
+  email     String   @unique
+  password  String
+  role      String?  @default("client")
+}
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  name      String
+  brand     String
+  category  String
+  model     String?
+  price     Float
+  costPrice Float    @default(0)
+  stock     Int
+  status    String   @default("Activo")
+}
+
+model FinancialRecord {
+  id                Int      @id @default(autoincrement())
+  type              String   // "INVOICE", "CREDIT_SALE"
+  amount            Float
+  status            String   // "PAID", "PENDING"
+  createdAt         DateTime @default(now())
+  dueDate           DateTime?
+}
+
+model Lead {
+  id        Int      @id @default(autoincrement())
+  source    String
+  status    String   // "OPEN", "CLOSED_WON", "CLOSED_LOST"
+  createdAt DateTime @default(now())
+}
+
+model Employee {
+  id        Int      @id @default(autoincrement())
+  name      String
+  status    String   // "ACTIVE", "INACTIVE"
+  hiredAt   DateTime @default(now())
+  leftAt    DateTime?
+}
