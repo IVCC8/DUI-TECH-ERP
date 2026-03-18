@@ -1,28 +1,12 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { NotificationProvider } from './context/NotificationContext';
-import Layout from './components/layout/Layout';
-
-const Login = lazy(() => import('./pages/Login'));
-const Dashboard = lazy(() => import('./pages/Dashboard'));
-const Inventory = lazy(() => import('./pages/Inventory'));
-const Orders = lazy(() => import('./pages/Orders'));
-const Customers = lazy(() => import('./pages/Customers'));
-const Finance = lazy(() => import('./pages/Finance'));
-const Docs = lazy(() => import('./pages/Docs'));
-const Profile = lazy(() => import('./pages/Profile'));
-const Support = lazy(() => import('./pages/Support'));
-const Catalog = lazy(() => import('./pages/Catalog'));
-const AccountStatement = lazy(() => import('./pages/AccountStatement'));
-const MySales = lazy(() => import('./pages/MySales'));
-const RH = lazy(() => import('./pages/RH/RH.jsx'));
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// ... (rest of imports)
 
 function App() {
   return (
     <AuthProvider>
       <NotificationProvider>
-        <BrowserRouter basename="/DUI-TECH-ERP">
+        <Router>
           <Suspense fallback={<div className="p-5 text-center text-muted"><i className="fas fa-spinner fa-spin me-2"></i>Cargando módulos...</div>}>
             <Routes>
               <Route path="/login" element={<Login />} />
@@ -45,7 +29,7 @@ function App() {
               </Route>
             </Routes>
           </Suspense>
-        </BrowserRouter>
+        </Router>
       </NotificationProvider>
     </AuthProvider>
   );
